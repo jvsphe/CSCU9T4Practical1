@@ -1,6 +1,9 @@
 // GUI and main program for the Training Record
 package com.stir.cscu9t4practical1;
 
+import com.stir.cscu9t4practical1.TrainingRecord;
+import com.stir.cscu9t4practical1.Entry;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
