@@ -8,17 +8,18 @@ public class SwimEntry extends Entry {
         this.location = loc;
     }
 
-    public String getLocation() {
+    public String getWhere() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setWhere(String location) {
         this.location = location;
     }
 
     @Override
     public String getEntry() {
-        String result = super.getName() + " swam " + getDistance() + " km " + (location.equals("pool") ? "in the pool" : "outdoors") +
+        String locationString = location.equals("pool") ? "in a pool" : "outdoors";
+        String result = getName() + " swam " + getDistance() + " km " + locationString +
                         " in " + getHour() + ":" + getMin() + ":" + getSec() +
                         " on " + getDay() + "/" + getMonth() + "/" + getYear() + "\n";
         return result;
