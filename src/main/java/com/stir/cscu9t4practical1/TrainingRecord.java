@@ -1,11 +1,7 @@
 // An implementation of a Training Record as an ArrayList
 package com.stir.cscu9t4practical1;
 
-
-
-
 import java.util.*;
-
 
 public class TrainingRecord {
     private List<Entry> tr;
