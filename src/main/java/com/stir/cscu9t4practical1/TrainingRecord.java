@@ -27,6 +27,19 @@ public class TrainingRecord {
        return result;
    } // lookupEntry
    
+   public boolean removeEntry(String name, int d, int m, int y) {
+    Iterator<Entry> iter = tr.iterator();
+    while (iter.hasNext()) {
+        Entry current = iter.next();
+        if (current.getName().equals(name) && current.getDay() == d &&
+            current.getMonth() == m && current.getYear() == y) {
+            iter.remove();
+            return true; 
+            }
+        }
+    return false; 
+    } 
+
    // Count the number of entries
    public int getNumberOfEntries(){
        return tr.size();

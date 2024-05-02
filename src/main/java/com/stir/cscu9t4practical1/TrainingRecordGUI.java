@@ -31,6 +31,7 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
     private JButton addR = new JButton("Add");
     private JButton lookUpByDate = new JButton("Look Up");
     private JButton findAllByDate = new JButton("Find by Date");
+    private JButton removeEntry = new JButton("Remove");
 
     private TrainingRecord myAthletes = new TrainingRecord();
 
@@ -74,6 +75,8 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         lookUpByDate.addActionListener(this);
         add(findAllByDate);
         findAllByDate.addActionListener(this);
+        add(removeEntry);
+        removeEntry.addActionListener(this);
         add(outputArea);
         outputArea.setEditable(false);
         setSize(720, 300);
@@ -96,6 +99,9 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         }
         if (event.getSource() == findAllByDate) { 
             message = findAllByDate();
+        }
+        if (event.getSource() == removeEntry) {
+            message = removeEntry();
         }
         outputArea.setText(message);
         blankDisplay();
@@ -146,6 +152,20 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         }
     
         return result.toString();
+    }
+
+    public String removeEntry() {
+        String message = "Entry removed\n";
+        System.out.println("Removing entry from the records");
+        String n = name.getText();
+        int m = Integer.parseInt(month.getText());
+        int d = Integer.parseInt(day.getText());
+        int y = Integer.parseInt(year.getText());
+        boolean removed = myAthletes.removeEntry(n, d, m, y);
+        if (!removed) {
+            message = "Entry not found";
+        }
+        return message;
     }
     
     public void blankDisplay() {
