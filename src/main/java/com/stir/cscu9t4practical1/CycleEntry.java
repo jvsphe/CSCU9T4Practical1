@@ -28,10 +28,10 @@ public class CycleEntry extends Entry {
 
     @Override
     public String getEntry() {
-        String result = super.getName() + " cycled " + getDistance() + " km on a " + terrain +
-                        " terrain at a " + tempo + " tempo in " +
+        String result = getName() + " cycled " + getDistance() + " km in " +
                         getHour() + ":" + getMin() + ":" + getSec() +
-                        " on " + getDay() + "/" + getMonth() + "/" + getYear() + "\n";
+                        " on " + getDay() + "/" + getMonth() + "/" + getYear() +
+                        " on " + getTerrain() + " at " + getTempo() + " tempo\n";
         return result;
     }
 }
