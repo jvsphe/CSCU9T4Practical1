@@ -1,23 +1,13 @@
 package com.stir.cscu9t4practical1;
 
 public class SprintEntry extends Entry {
-    private String sessionType;
     private int repetitions;
-    private int recoveryTime;
+    private int recovery;
 
-    public SprintEntry(String n, int d, int m, int y, int h, int min, int s, float dist, String st, int rep, int rt) {
+    public SprintEntry(String n, int d, int m, int y, int h, int min, int s, float dist, int rep, int rt) {
         super(n, d, m, y, h, min, s, dist);
-        this.sessionType = st;
         this.repetitions = rep;
-        this.recoveryTime = rt;
-    }
-
-    public String getSessionType() {
-        return this.sessionType;
-    }
-
-    public void setSessionType(String sessionType) {
-        this.sessionType = sessionType;
+        this.recovery = rt;
     }
 
     public int getRepetitions() {
@@ -28,19 +18,20 @@ public class SprintEntry extends Entry {
         this.repetitions = repetitions;
     }
 
-    public int getRecoveryTime() {
-        return this.recoveryTime;
+    public int getRecovery() {
+        return this.recovery;
     }
 
-    public void setRecoveryTime(int recoveryTime) {
-        this.recoveryTime = recoveryTime;
+    public void setRecovery(int recovery) {
+        this.recovery = recovery;
     }
 
     @Override
     public String getEntry() {
-        String result = getName() + " did " + repetitions + " " + sessionType + " (with " + recoveryTime + " min. recovery between); running " +
-                getDistance() + " km in " + getHour() + ":" + getMin() + ":" + getSec() +
-                " on " + getDay() + "/" + getMonth() + "/" + getYear() + "\n";
+        String result = getName() + " sprinted " + getRepetitions() + "x" + getDistance() + "m" +
+                        " in " + getHour() + ":" + getMin() + ":" + getSec() +
+                        " with " + getRecovery() + " minutes recovery on " +
+                        getDay() + "/" + getMonth() + "/" + getYear() + "\n";
         return result;
-    }
+    }    
 }
