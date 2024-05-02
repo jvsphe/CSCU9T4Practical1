@@ -39,5 +39,9 @@ public class TrainingRecord {
    public void clearAllEntries(){
        tr.clear();
    }
+
+   public List<Entry> getEntries() {
+    return tr;
+}
    
 } // TrainingRecord

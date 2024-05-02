@@ -27,10 +27,11 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
     private JLabel labdist = new JLabel(" Distance (km):");
     private JButton addR = new JButton("Add");
     private JButton lookUpByDate = new JButton("Look Up");
+    private JButton findAllByDate = new JButton("Find by Date");
 
     private TrainingRecord myAthletes = new TrainingRecord();
 
-    private JTextArea outputArea = new JTextArea(5, 50);
+    private JTextArea outputArea = new JTextArea(10, 50);
 
     public static void main(String[] args) {
         TrainingRecordGUI applic = new TrainingRecordGUI();
@@ -68,9 +69,11 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         addR.addActionListener(this);
         add(lookUpByDate);
         lookUpByDate.addActionListener(this);
+        add(findAllByDate);
+        findAllByDate.addActionListener(this);
         add(outputArea);
         outputArea.setEditable(false);
-        setSize(720, 200);
+        setSize(720, 300);
         setVisible(true);
         blankDisplay();
 
@@ -87,6 +90,9 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         }
         if (event.getSource() == lookUpByDate) {
             message = lookupEntry();
+        }
+        if (event.getSource() == findAllByDate) { 
+            message = findAllByDate();
         }
         outputArea.setText(message);
         blankDisplay();
@@ -117,6 +123,28 @@ public class TrainingRecordGUI extends JFrame implements ActionListener {
         return message;
     }
 
+    public String findAllByDate() {
+        int d = Integer.parseInt(day.getText());
+        int m = Integer.parseInt(month.getText());
+        int y = Integer.parseInt(year.getText());
+    
+        StringBuilder result = new StringBuilder();
+        boolean found = false;
+    
+        for (Entry entry : myAthletes.getEntries()) {
+            if (entry.getDay() == d && entry.getMonth() == m && entry.getYear() == y) {
+                result.append(entry.getEntry()).append("\n");
+                found = true;
+            }
+        }
+    
+        if (!found) {
+            result.append("No entries found for ").append(d).append("/").append(m).append("/").append(y);
+        }
+    
+        return result.toString();
+    }
+    
     public void blankDisplay() {
         name.setText("");
         day.setText("");
